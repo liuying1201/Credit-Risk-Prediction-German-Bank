@@ -89,18 +89,7 @@
 
 最終，模型能夠預測 80% 的高風險客戶，有效解決了商業問題。總結來說，為了解決不平衡目標，我實施了分層保持和交叉驗證策略，使用了 class-weight 超參數，並平衡了精度-召回率。
 
-## 7. 網頁應用和下一步
-構建了一個 Flask 網頁應用，允許用戶輸入客戶信息並獲取信用風險預測結果。下一步將專注於將該應用部署到雲端，如 AWS。
-
-網頁應用首頁：
-
-![網頁應用 1](images/web_app_1.jpeg)
-
-網頁應用預測頁面：
-
-![網頁應用 2](images/web_app_2.jpeg)
-
-## 8. 在本地運行專案
+## 7. 在本地運行專案
 ### 先決條件
 在開始之前，確保你已經在本地機器上安裝了以下工具：
 - Python 3.11.4
@@ -123,11 +112,11 @@ source venv/bin/activate  # 在 Windows 上使用 'venv\Scripts\activate'
 5. 運行應用程序：
 python application.py
 
-##  9. 數據集來源
+##  8. 數據集來源
 數據集來自 Kaggle，屬於 UCI 機器學習庫。
 https://www.kaggle.com/datasets/uciml/german-credit
 
-## 10. 聯繫方式
+## 9. 聯繫方式
 GitHub： https://github.com/liuying1201
 Email： liuying1201324@gmail.com
 
