@@ -16,23 +16,23 @@
         "id": "5XfwJAmvMMRp"
       },
       "source": [
-        "# Machine learning german bank credit risk prediction\n",
-        "In this project, I will build a <b>machine learning model to predict credit risk of German Bank's customers</b>. It involves <b>supervised learning (using a labeled training set) for classification</b>, where the <b>target</b> is <b>1</b> if the <b>customer</b> represents a <b>bad risk</b>, and <b>0</b> if he represent a <b>good risk</b>.\n",
+        "# 德國銀行信用風險預測\n",
+        "在本專案中，我將構建一個<b>機器學習模型來預測德國銀行客戶的信用風險</b>。這涉及<b>監督學習（使用帶標籤的訓練集）進行分類</b>，其中<b>目標</b>是<b>1</b>表示<b>高風險</b>客戶，<b>0</b>表示<b>低風險</b>客戶。\n",
         "\n",
-        "I will use the following <b>pipeline:</b>\n",
+        "我將使用以下<b>流程：</b>\n",
         "\n",
-        "<b>1. Define the business problem.</b><br>\n",
-        "<b>2. Collect the data and get a general overview of it.</b><br>\n",
-        "<b>3. Split the data into train and test sets.</b><br>\n",
-        "<b>4. Explore the data (exploratory data analysis)</b><br>\n",
-        "<b>5. Data cleaning and preprocessing.</b><br>\n",
-        "<b>6. Model training, comparison, selection and tuning.</b><br>\n",
-        "<b>7. Final production model testing and evaluation.</b><br>\n",
-        "<b>8. Conclude and interpret the model results.</b><br>\n",
-        "<b>9. Deploy.</b><br>\n",
+        "<b>1. 定義商業問題。</b><br>\n",
+        "<b>2. 收集數據並進行概覽。</b><br>\n",
+        "<b>3. 將數據分為訓練集和測試集。</b><br>\n",
+        "<b>4. 探索性數據分析（EDA）</b><br>\n",
+        "<b>5. 數據清洗和預處理。</b><br>\n",
+        "<b>6. 模型訓練、比較、選擇和調優。</b><br>\n",
+        "<b>7. 最終生產模型測試和評估。</b><br>\n",
+        "<b>8. 得出結論並解釋模型結果。</b><br>\n",
+        "<b>9. 部署。</b><br>\n",
         "\n",
         "\n",
-        "In <b>this notebook</b>, I will perform <b>exploratory data analysis (EDA), covering steps 1 to 4 of the machine learning project pipeline above.</b> The main <b>objective</b> here is to <b>uncover patterns and insights</b> that will give us <b>valuable information about credit risk</b> within the available features. Thus, even before building a model, it will be possible to help the bank with some customer profiles, characteristics of clients and credit services that present higher levels of risk, etc. Furthermore, I will approach these steps in more detail below, with an overview of them and the explanation of why I am making each decision."
+        "在<b>本筆記本中</b>，我將進行<b>探索性數據分析（EDA），涵蓋上述機器學習專案流程的第1到第4步。</b>主要<b>目標</b>是<b>揭示模式和見解</b>，這將為我們提供<b>有關信用風險的寶貴信息</b>。因此，即使在構建模型之前，我們也可以幫助銀行了解某些客戶特徵、客戶特徵和信用服務的風險水平等。"
       ]
     },
     {
@@ -41,22 +41,22 @@
         "id": "GIbNOb1vMMRr"
       },
       "source": [
-        "# 1. Business problem\n",
+        "# 1. 商業問題\n",
         "\n",
-        "<b>Predict credit risk of German Bank's customers.</b><br>\n",
+        "<b>預測德國銀行客戶的信用風險。</b><br>\n",
         "\n",
-        "<b>Credit risk</b> refers to the potential financial loss that a lender, such as a bank, might incur if a borrower fails to repay a loan or credit obligation. It's the uncertainty about whether borrowers will honor their financial commitments.\n",
+        "<b>信用風險</b>是指貸款機構（如銀行）在借款人未能償還貸款或信用義務時可能遭受的財務損失。這是不確定的，借款人是否會履行其財務承諾。\n",
         "\n",
-        "<b>The German Bank aims to predict their customers' credit risk for several reasons:</b><br>\n",
+        "<b>德國銀行旨在預測其客戶的信用風險，原因如下：</b><br>\n",
         "\n",
-        "<b>1. Risk Assessment:</b> By predicting whether a customer is a good or bad risk, banks can assess the likelihood of loan defaults or late payments, helping them make informed lending decisions.<br>\n",
-        "<b>2. Profitability:</b> Accurate credit risk prediction allows banks to offer appropriate interest rates based on a customer's risk profile, ensuring fair compensation for the level of risk involved.<br>\n",
-        "<b>3. Minimize Losses:</b> Identifying high-risk customers helps banks allocate resources effectively, focusing more attention on potential problem cases and minimizing potential financial losses.<br>\n",
-        "<b>4. Compliance:</b> Regulatory requirements often mandate that banks maintain certain levels of capital reserves to cover potential credit losses. Accurate risk prediction aids in regulatory compliance.<br>\n",
-        "<b>5. Customer Segmentation:</b> Predicting credit risk allows banks to segment customers based on risk profiles, tailoring financial products and services to individual needs and risk tolerance.<br>\n",
-        "<b>6. Strengthen Trust:</b> Sound risk assessment builds trust with customers, as banks can demonstrate responsible lending practices and transparency.<br>\n",
+        "<b>1. 風險評估：</b>通過預測客戶是好風險還是壞風險，銀行可以評估貸款違約或延遲付款的可能性，從而做出明智的貸款決策。<br>\n",
+        "<b>2. 盈利能力：</b>準確的信用風險預測使銀行能夠根據客戶的風險概況提供適當的利率，確保合理的風險補償。<br>\n",
+        "<b>3. 減少損失：</b>識別高風險客戶有助於銀行有效地分配資源，專注於潛在問題案例，從而最大限度地減少財務損失。<br>\n",
+        "<b>4. 合規：</b>法規要求通常要求銀行保持一定水平的資本準備金，以應對潛在的信用損失。準確的風險預測有助於合規。<br>\n",
+        "<b>5. 客戶分群：</b>預測信用風險使銀行能夠根據風險概況對客戶進行分群，量身定制金融產品和服務，以滿足個人需求和風險承受能力。<br>\n",
+        "<b>6. 增強信任：</b>可靠的風險評估建立了客戶的信任，因為銀行可以展示負責任的貸款實踐和透明度。<br>\n",
         "\n",
-        "By employing <b>predictive models</b>, <b>the German Bank</b> can make <b>informed decisions</b> that <b>balance profit generation with prudent risk management</b>, ultimately benefiting both the institution and its customers. Thus, the project objective is to build a model that is able to identify as many as possible bad risk customers and provide valuable insights about credit risk within the available features. By doing this, the business problem will be solved."
+        "通過使用<b>預測模型</b>，<b>德國銀行</b>可以做出<b>明智的決策</b>，<b>平衡盈利和風險管理</b>，最終使銀行和客戶都受益。因此，專案目標是建立一個能夠識別盡可能多的壞風險客戶的模型，並在可用特徵內提供有價值的洞察。"
       ]
     },
     {
@@ -65,7 +65,7 @@
         "id": "WQVsKqgoMMRs"
       },
       "source": [
-        "### Importing the libraries"
+        "### 導入庫"
       ]
     },
     {
@@ -104,24 +104,24 @@
         }
       ],
       "source": [
-        "# Data manipulation and visualization.\n",
+        "# 數據操作和可視化。\n",
         "import pandas as pd\n",
         "import numpy as np\n",
         "import matplotlib.pyplot as plt\n",
         "import seaborn as sns\n",
         "\n",
-        "# Split the data and clustering.\n",
+        "# 分割數據和聚類。\n",
         "from sklearn.model_selection import train_test_split\n",
         "from sklearn.cluster import KMeans\n",
         "\n",
-        "# Utils\n",
+        "# 工具\n",
         "from notebooks.eda_utils import *\n",
         "\n",
-        "# Filter warnings.\n",
+        "# 過濾警告。\n",
         "import warnings\n",
         "warnings.filterwarnings('ignore')\n",
         "\n",
-        "# Seaborn grid style.\n",
+        "# Seaborn 網格樣式。\n",
         "sns.set_theme(style='whitegrid')"
       ]
     },
@@ -131,9 +131,9 @@
         "id": "Nuyl417jMMRt"
       },
       "source": [
-        "# 2. Understanding the data\n",
-        "- The dataset was collected from kaggle: https://www.kaggle.com/datasets/kabure/german-credit-data-with-risk\n",
-        "- The dataset makes part of the UCI Machine Learning repository."
+        "# 2. 理解數據\n",
+        "- 數據集來自 Kaggle: https://www.kaggle.com/datasets/kabure/german-credit-data-with-risk\n",
+        "- 該數據集是 UCI 機器學習庫的一部分。"
       ]
     },
     {
@@ -145,7 +145,7 @@
       "outputs": [],
       "source": [
         "df = pd.read_csv('data/german_credit_data.csv')\n",
-        "# Dropping useless column.\n",
+        "# 刪除無用的列。\n",
         "df.drop(columns=['Unnamed: 0'], inplace=True)"
       ]
     },
@@ -166,17 +166,17 @@
         "id": "mUKel3phMMRu"
       },
       "source": [
-        "### Data dictionary\n",
-        "<b>1. Age</b> (numeric)<br>\n",
-        "<b>2. Sex</b> (text: male, female)<br>\n",
-        "<b>3. Job</b> (numeric: 0 - unskilled and non-resident, 1 - unskilled and resident, 2 - skilled, 3 - highly skilled)<br>\n",
-        "<b>4. Housing</b> (text: own, rent, or free)<br>\n",
-        "<b>5. Saving accounts</b> (text - little, moderate, quite rich, rich)<br>\n",
-        "<b>6. Checking account</b> (numeric, in DM - Deutsch Mark)<br>\n",
-        "<b>7. Credit amount</b> (numeric, in DM)<br>\n",
-        "<b>8. Duration</b> (numeric, in month)<br>\n",
-        "<b>9. Purpose</b> (text: car, furniture/equipment, radio/TV, domestic appliances, repairs, education, business, vacation/others)<br>\n",
-        "<b>10. Risk</b> (text: target, good risk and bad risk)<br>"
+        "### 數據字典\n",
+        "<b>1. 年齡</b>（數值型）<br>\n",
+        "<b>2. 性別</b>（文本：男，女）<br>\n",
+        "<b>3. 工作</b>（數值型：0 - 無技能且非居民，1 - 無技能且居民，2 - 有技能，3 - 高技能）<br>\n",
+        "<b>4. 住房</b>（文本：自有，租賃或免費）<br>\n",
+        "<b>5. 儲蓄賬戶</b>（文本 - 少量，中等，相當富有，富有）<br>\n",
+        "<b>6. 支票賬戶</b>（數值型，以DM - 德國馬克計）<br>\n",
+        "<b>7. 信用金額</b>（數值型，以DM計）<br>\n",
+        "<b>8. 持續時間</b>（數值型，以月計）<br>\n",
+        "<b>9. 目的</b>（文本：汽車，家具/設備，收音機/電視，家用電器，修理，教育，商業，度假/其他）<br>\n",
+        "<b>10. 風險</b>（文本：目標，良好風險和壞風險）<br>"
       ]
     },
     {
@@ -185,7 +185,7 @@
         "id": "vvlxuunOMMRu"
       },
       "source": [
-        "Looking at dataset general information."
+        "查看數據集的一般信息。"
       ]
     },
     {
@@ -207,7 +207,7 @@
       },
       "outputs": [],
       "source": [
-        "print(f'The dataset has {df.shape[0]} rows and {df.shape[1]} columns.')"
+        "print(f'數據集有 {df.shape[0]} 行和 {df.shape[1]} 列。')"
       ]
     },
     {
@@ -216,7 +216,7 @@
         "id": "9BqlAV5uMMRv"
       },
       "source": [
-        "There are some missing values in Checking account and Saving accounts. Furthermore, the features seem to be in the correct data types."
+        "支票賬戶和儲蓄賬戶有一些缺失值。此外，特徵似乎是正確的數據類型。"
       ]
     },
     {
@@ -225,7 +225,7 @@
         "id": "Ti3P861uMMRv"
       },
       "source": [
-        "Looking at some descriptive statistics."
+        "查看一些描述性統計。"
       ]
     },
     {
@@ -245,11 +245,11 @@
         "id": "6MUvMpV1MMRv"
       },
       "source": [
-        "Some interesting points:\n",
-        "1. The average age is approximately 36 years.\n",
-        "2. The average credit amount is approximately 3271.\n",
-        "3. The average credit service duration is 21 months.\n",
-        "4. Looks like there are some outliers."
+        "一些有趣的點：\n",
+        "1. 平均年齡約為36歲。\n",
+        "2. 平均信用金額約為3271。\n",
+        "3. 信用服務持續時間平均為21個月。\n",
+        "4. 看起來有一些異常值。"
       ]
     },
     {
@@ -258,7 +258,7 @@
         "id": "vosgDlHoMMRv"
       },
       "source": [
-        "Looking at missing and duplicated values."
+        "查看缺失值和重複值。"
       ]
     },
     {
@@ -289,7 +289,7 @@
         "id": "YRkTD3LrMMRv"
       },
       "source": [
-        "There are some missing values in Checking account and Saving accounts. Moreover, there are not duplicated values."
+        "支票賬戶和儲蓄賬戶有一些缺失值。此外，沒有重複值。"
       ]
     },
     {
@@ -298,7 +298,7 @@
         "id": "GJD2bKsVMMRw"
       },
       "source": [
-        "Target (Risk) and Sex can be expressed as binary features. I will label bad risk as 1 and good risk as 0, because the idea is to accurately predict bad risk customers in order to avoid defaults and so on. Moreover, I will label male as 1 and female as 0."
+        "目標（風險）和性別可以表達為二元特徵。我將壞風險標記為1，良好風險標記為0，因為目標是準確地預測壞風險客戶以避免違約等。此外，我將男性標記為1，女性標記為0。"
       ]
     },
     {
@@ -319,11 +319,11 @@
         "id": "vt02Qa4mMMRw"
       },
       "source": [
-        "# 3. Split the data into train and test sets\n",
-        "- First of all, I will split the data into train and test sets.\n",
-        "- Test set is supposed to be data the model has never seen before.\n",
-        "- I will perform EDA focusing on the training set in order to avoid data leakage, get a realistic representation and evaluate the model correctly with new unseen data.\n",
-        "- I will specify stratify=y so that the train_test_split function ensures that the splitting process maintains the same percentage of each target class in both the training and testing sets. This is particularly useful when dealing with imbalanced datasets, which is the case, as there are more good risk customers than bad risk ones."
+        "# 3. 將數據分為訓練集和測試集\n",
+        "- 首先，我將數據分為訓練集和測試集。\n",
+        "- 測試集應該是模型從未見過的數據。\n",
+        "- 我將進行EDA，專注於訓練集，以避免數據洩露，獲得現實的代表性，並使用新的未見數據正確評估模型。\n",
+        "- 我將指定 stratify=y，以確保 train_test_split 函數在訓練集和測試集中保持相同的目標類別百分比。這在處理不平衡數據集時特別有用，因為良好風險客戶多於壞風險客戶。"
       ]
     },
     {
@@ -348,10 +348,10 @@
       },
       "outputs": [],
       "source": [
-        "print(f'Train predictor dataset shape: {X_train.shape}.')\n",
-        "print(f'Train target dataset shape: {y_train.shape}.')\n",
-        "print(f'Test predictor dataset shape: {X_test.shape}.')\n",
-        "print(f'Test target dataset shape: {y_test.shape}.')"
+        "print(f'訓練預測變量數據集形狀：{X_train.shape}')\n",
+        "print(f'訓練目標數據集形狀：{y_train.shape}')\n",
+        "print(f'測試預測變量數據集形狀：{X_test.shape}')\n",
+        "print(f'測試目標數據集形狀：{y_test.shape}')"
       ]
     },
     {
@@ -362,9 +362,9 @@
       },
       "outputs": [],
       "source": [
-        "print(f'Train target proportion: ')\n",
+        "print(f'訓練目標比例：')\n",
         "print(f'{y_train.value_counts(normalize=True)}')\n",
-        "print(f'\\nTest target proportion: ')\n",
+        "print(f'\\n測試目標比例：')\n",
         "print(f'{y_test.value_counts(normalize=True)}')"
       ]
     },
@@ -374,7 +374,7 @@
         "id": "jePeDrLNMMRx"
       },
       "source": [
-        "The target proportion of each class is preserved."
+        "保持了每個類別的目標比例。"
       ]
     },
     {
@@ -383,8 +383,8 @@
         "id": "6UBEljOWMMRx"
       },
       "source": [
-        "# 4. Exploratory data analysis\n",
-        "I will explore the training set in order to get a better undestanding of how the features are individually distributed, the relashionships between them, correlations, trends and possible insights from the data, especially regard to the target variable (Risk). Thus, I will do univariate, bivariate and multivariate analysis of the data."
+        "# 4. 探索性數據分析\n",
+        "我將探索訓練集，以更好地了解每個特徵的分佈情況、它們之間的關係、相關性、趨勢和可能的數據洞察，特別是目標變量（風險）。因此，我將進行數據的單變量、雙變量和多變量分析。"
       ]
     },
     {
@@ -393,7 +393,7 @@
         "id": "ZeB8mFmGMMRx"
       },
       "source": [
-        "I will get an entire train set (with predictor and target features) in order to use seaborn 'hue' parameter for visualizations and look at the correlation matrix."
+        "我將獲取整個訓練集（包含預測變量和目標變量），以便使用seaborn的'hue'參數進行可視化並查看相關矩陣。"
       ]
     },
     {
@@ -414,7 +414,7 @@
         "id": "MTF_pnP6MMRx"
       },
       "source": [
-        "I will get categorical features, numerical features and target feature separate lists in order to turn data visualization and exploration easier."
+        "我將分別獲取數值特徵、分類特徵和目標特徵列表，以便於數據可視化和探索。"
       ]
     },
     {
@@ -429,11 +429,11 @@
         "categorical_features = X_train.select_dtypes('object').columns.tolist()\n",
         "target = 'Risk'\n",
         "\n",
-        "print(f'There are {len(numerical_features)} numerical features. They are: ')\n",
+        "print(f'有 {len(numerical_features)} 個數值特徵。它們是：')\n",
         "print(numerical_features)\n",
-        "print(f'\\nThere are {len(categorical_features)} categorical features. They are: ')\n",
+        "print(f'\\n有 {len(categorical_features)} 個分類特徵。它們是：')\n",
         "print(categorical_features)\n",
-        "print(f'\\nThe target feature is: {target}.')"
+        "print(f'\\n目標特徵是：{target}。')"
       ]
     },
     {
@@ -442,7 +442,7 @@
         "id": "F9qiHBzdMMRy"
       },
       "source": [
-        "I will look at categorical features unique values. Cardinality is an important factor when choosing an encoding technique for them."
+        "我將查看分類特徵的唯一值。基數是一個重要因素，選擇適當的編碼技術。"
       ]
     },
     {
@@ -456,7 +456,7 @@
         "for feature in categorical_features:\n",
         "    print(feature)\n",
         "    print('-'*40)\n",
-        "    print(f'There are {train[feature].nunique()} unique values. They are: ')\n",
+        "    print(f'有 {train[feature].nunique()} 個唯一值。它們是：')\n",
         "    print(train[feature].value_counts(normalize=True))\n",
         "    print()"
       ]
@@ -467,12 +467,12 @@
         "id": "9ufIKrqwMMRy"
       },
       "source": [
-        "Insights:\n",
-        "1. Saving accounts and Checking accounts present an ordinal relationship. Ordinal encoder might be a good choice for encoding them.\n",
-        "2. Purpose has a higher cardinality comparing to the other categorical features. As I have a little amount of data, target encoder might be a good choice for encoding it. Applying one hot encoder would increase dimensionality, favoring overfitting.\n",
-        "3. Housing doesn't have an ordinal relationship. Thus, target encoder would also be good for encoding it.\n",
+        "洞察：\n",
+        "1. 儲蓄賬戶和支票賬戶呈現出順序關係。順序編碼可能是對它們進行編碼的好選擇。\n",
+        "2. 與其他分類特徵相比，目的的基數較高。由於數據量較少，目標編碼可能是對其進行編碼的好選擇。應用單熱編碼會增加維度，導致過擬合。\n",
+        "3. 住房沒有順序關係。因此，目標編碼對其進行編碼也不錯。\n",
         "\n",
-        "Moreover, I will do univariate, bivariate and multivariate analysis of these features below in order to uncover patterns and insights."
+        "此外，我將在下面進行這些特徵的單變量、雙變量和多變量分析，以揭示模式和洞察。"
       ]
     },
     {
@@ -481,8 +481,8 @@
         "id": "EGwIZL23MMRy"
       },
       "source": [
-        "### Univariate analysis\n",
-        "I will do univariate analysis below in order to see which are the typical values of each feature for the bank's customers."
+        "### 單變量分析\n",
+        "我將在下面進行單變量分析，以查看銀行客戶的每個特徵的典型值。"
       ]
     },
     {
@@ -491,7 +491,7 @@
         "id": "HX9m7ChUMMRy"
       },
       "source": [
-        "### Target distribution"
+        "### 目標分佈"
       ]
     },
     {
@@ -522,10 +522,10 @@
         "id": "CH0ja_RzMMRz"
       },
       "source": [
-        "The target is slightly imbalanced. 30% of the customers are bad risk. Thus, I will adopt some strategies in order to deal with this, because I only have 1000 rows of data. They are:\n",
-        "1. Stratified hold-out and k-fold cross validation in order to maintain the target proportion on test and validation sets, even for hyperparameter tuning.\n",
-        "2. Define different class weights for majority and minority class instances. The idea is to define higher weights to minority class, such that the model will be penalized when mistakenly classifying a bad risk customer. These weights are defined on the model specific hyperparameter for it.\n",
-        "3. Take a look at precision vs recall trade-off if necessary. The objective is to predict as many as possible bad risk customers, so a high recall must be the priority."
+        "目標有點不平衡。30%的客戶是壞風險。因此，我將採取一些策略來應對這種情況，因為我只有1000行數據。它們是：\n",
+        "1. 分層保留和k折交叉驗證，以保持測試集和驗證集中目標比例，即使是超參數調優。\n",
+        "2. 為多數類和少數類實例定義不同的類權重。目的是為少數類定義較高的權重，以便模型在錯誤分類壞風險客戶時受到懲罰。這些權重在模型特定的超參數中定義。\n",
+        "3. 根據需要查看精度與召回率的權衡。目的是預測盡可能多的壞風險客戶，因此高召回率必須是優先事項。"
       ]
     },
     {
@@ -534,8 +534,8 @@
         "id": "8lphk2AdMMRz"
       },
       "source": [
-        "### Numerical features distributions\n",
-        "I will look at numerical features distributions below in order to see if there are skewed distributions and which are the most common values for the bank's customers numeric attributes."
+        "### 數值特徵分佈\n",
+        "我將查看下面的數值特徵分佈，以查看是否存在偏斜分佈以及銀行客戶數字屬性的常見值。"
       ]
     },
     {
@@ -557,10 +557,10 @@
         "id": "P8IhUBVhMMRz"
       },
       "source": [
-        "Insights:\n",
-        "1. Most of the customers are between 20 and 40 years old.\n",
-        "2. As expected, the distribution of credit amounts is skewed to the right. Most customers have low credit amounts, while there are some outliers with very high credit balances.\n",
-        "3. A significant portion of the customers stay for either 12 or 24 months while using the bank's credit service."
+        "洞察：\n",
+        "1. 大多數客戶年齡在20到40歲之間。\n",
+        "2. 如預期，信用金額的分佈向右偏斜。大多數客戶的信用金額較低，而有些異常值的信用餘額非常高。\n",
+        "3. 相當多的客戶在使用銀行的信用服務時持續時間為12或24個月。"
       ]
     },
     {
@@ -569,8 +569,8 @@
         "id": "Dxv2fAnwMMRz"
       },
       "source": [
-        "### Outliers\n",
-        "I will look at outliers in the data in order to see if they represent inconsistent information like measurement errors. Once I do this, I will decide if I will treat them or not. Moreover, I will plot boxplots below for visualization purposes."
+        "### 異常值\n",
+        "我將查看數據中的異常值，以查看它們是否代表不一致的信息，如測量誤差。一旦我這樣做，我將決定是否處理它們。此外，我將在下面繪製箱線圖以進行可視化。"
       ]
     },
     {
@@ -601,7 +601,7 @@
         "id": "K5hAkELmMMR0"
       },
       "source": [
-        "I will not drop any outlier because I have a little amount of data (just 1000 rows). Anyway, the outliers don't represent inconsistent information. Naturally, some customers will have a higher credit amount, be older and stay more time consuming the bank credit service."
+        "我不會刪除任何異常值，因為我只有少量數據（只有1000行）。無論如何，異常值並不代表不一致的信息。自然地，一些客戶的信用金額會更高，年齡更大，使用銀行信用服務的時間更長。"
       ]
     },
     {
@@ -610,8 +610,8 @@
         "id": "PN0nBx_oMMR0"
       },
       "source": [
-        "### Categorical features distributions\n",
-        "I will look at categorical features countplots below in order to see which are the most common characteristics of the bank's customers. Moreover, I will include Sex and Job in these plots because Sex is binary and Job has just a few values, which are more easy to visualize in a countplot."
+        "### 分類特徵分佈\n",
+        "我將在下面查看分類特徵的計數圖，以查看銀行客戶的最常見特徵。此外，我將在這些圖中包含性別和工作，因為性別是二元的，工作只有少數幾個值，更容易在計數圖中可視化。"
       ]
     },
     {
@@ -635,7 +635,7 @@
       },
       "outputs": [],
       "source": [
-        "# Plotting purpose separately.\n",
+        "# 分別繪製目的。\n",
         "plt.figure(figsize=(15, 5))\n",
         "ax = sns.countplot(data=train, x='Purpose')\n",
         "plt.show()"
@@ -647,13 +647,13 @@
         "id": "rbUDyz9tMMR0"
       },
       "source": [
-        "Insights:\n",
-        "1. There are more than twice as many male customers as female ones.\n",
-        "2. Most of the customers jobs are skilled.\n",
-        "3. Most of the customers have their own house.\n",
-        "4. Most of the customers have little saving accounts.\n",
-        "5. Most of the customers have little or moderate checking account.\n",
-        "6. Most of the customers took out credit with the bank for car, radio/tv and furniture/equipment purposes.\n"
+        "洞察：\n",
+        "1. 男性客戶的數量是女性的兩倍多。\n",
+        "2. 大多數客戶的工作是有技能的。\n",
+        "3. 大多數客戶擁有自己的房子。\n",
+        "4. 大多數客戶的儲蓄賬戶較少。\n",
+        "5. 大多數客戶的支票賬戶較少或中等。\n",
+        "6. 大多數客戶貸款的目的是購車、收音機/電視和家具/設備。"
       ]
     },
     {
@@ -662,8 +662,8 @@
         "id": "vx1b8gXDMMR0"
       },
       "source": [
-        "### Bivariate and multivariate analysis\n",
-        "I will do bivariate and multivariate analysis below in order to see how the features are related to each other, particularly with the target variable (Risk)."
+        "### 雙變量和多變量分析\n",
+        "我將在下面進行雙變量和多變量分析，以查看特徵之間的關係，特別是與目標變量（風險）的關係。"
       ]
     },
     {
@@ -672,8 +672,8 @@
         "id": "2gYI_W-PMMR1"
       },
       "source": [
-        "### Correlation matrix\n",
-        "I will examine the correlation matrix in order to identify any linear relationships between the features in the data, particularly with the target variable, and assess the strength and direction of these relationships."
+        "### 相關矩陣\n",
+        "我將檢查相關矩陣，以識別數據中特徵之間的任何線性關係，特別是與目標變量的關係，並評估這些關係的強度和方向。"
       ]
     },
     {
@@ -716,10 +716,10 @@
         "id": "o53JxrkGMMR1"
       },
       "source": [
-        "Insights:\n",
-        "1. Credit amount and Duration are weakly positively correlated with the target. It makes sense because higher credit amounts tend to be associated with longer credit service durations, thus indicating a higher level of risk, while lower credit amounts tend to be associated with shorter credit service durations, presenting a lower level of risk.\n",
-        "2. Duration and credit amount are strongly positively correlated. Thus, when the duration of a credit service (such as a loan) is longer, the associated credit amount is generally higher, and when the duration is shorter, the associated credit amount tends to be lower. It makes total sense, higher loan amounts demand more time for being paid while lower loan amounts demand less time for being paid, for example.\n",
-        "3. Credit amount and Job are moderately positively correlated. Thus, customers with more skilled jobs tend to have higher credit amounts and customers with less skilled jobs tend to have lower credit amounts."
+        "洞察：\n",
+        "1. 信用金額和持續時間與目標的正相關性較弱。這很合理，因為較高的信用金額往往與較長的信用服務持續時間相關，從而表明較高的風險水平，而較低的信用金額往往與較短的信用服務持續時間相關，表現出較低的風險水平。\n",
+        "2. 持續時間和信用金額有強正相關。因此，當信用服務（如貸款）的持續時間較長時，相關的信用金額通常較高，而當持續時間較短時，相關的信用金額通常較低。這完全合理，較高的貸款金額需要更多的時間來償還，而較低的貸款金額需要較少的時間來償還。\n",
+        "3. 信用金額和工作有中等正相關。因此，擁有更高技能工作的客戶往往具有較高的信用金額，而擁有較低技能工作的客戶往往具有較低的信用金額。"
       ]
     },
     {
@@ -728,7 +728,7 @@
         "id": "8TcLCCneMMR1"
       },
       "source": [
-        "I will look at seaborn pairplot below to illustrate the insights above."
+        "我將在下面查看seaborn的pairplot，以說明上述洞察。"
       ]
     },
     {
@@ -737,7 +737,7 @@
         "id": "Bt4CsPhFMMR1"
       },
       "source": [
-        "### Pairplot"
+        "### 配對圖"
       ]
     },
     {
@@ -758,8 +758,8 @@
         "id": "VdRsiankMMR2"
       },
       "source": [
-        "### Numerical features vs Risk\n",
-        "I will look at bad risk and good risk customers numerical distributions below in order to see if there is any significant difference between them."
+        "### 數值特徵與風險\n",
+        "我將在下面查看壞風險和良好風險客戶的數值分佈，以查看它們之間是否存在顯著差異。"
       ]
     },
     {
@@ -790,10 +790,10 @@
         "id": "xI_xzgqkMMR2"
       },
       "source": [
-        "Insights:\n",
-        "1. Bad risk customers are slightly younger compared to good risk ones. This makes total sense because young people generally don't have financial stability.\n",
-        "2. Bad risk customers tend to borrow higher credit amounts compared to good risk ones. This was expected since higher credit amounts present higher levels of risk as they're harder to pay.\n",
-        "3. Bad risk customers tend to use credit services for longer durations compared to good risk ones. This was expected because, as I saw above, when the duration of a credit service (such as a loan) is longer, the associated credit amount is generally higher and thus the levels of risk are so. Furthermore, the more time a client spends not paying the credit service he is using, the higher the risk of default."
+        "洞察：\n",
+        "1. 與良好風險客戶相比，壞風險客戶略年輕。這完全合理，因為年輕人通常沒有經濟穩定。\n",
+        "2. 與良好風險客戶相比，壞風險客戶傾向於借用較高的信用金額。這是預期的，因為較高的信用金額更難償還，風險較高。\n",
+        "3. 與良好風險客戶相比，壞風險客戶傾向於使用信用服務的時間較長。這是預期的，因為正如我上面所看到的，當信用服務（如貸款）的持續時間較長時，相關的信用金額通常較高，因此風險水平較高。此外，客戶花更多時間不償還所使用的信用服務，違約風險越高。"
       ]
     },
     {
@@ -802,8 +802,8 @@
         "id": "46FOKRoKMMR2"
       },
       "source": [
-        "### Categorical features vs Risk\n",
-        "I will look at how bad risk and good risk customers are distributed over different categorical features categories in order to see which are the categories with higher proportions of bad risk customers."
+        "### 分類特徵與風險\n",
+        "我將查看壞風險和良好風險客戶在不同分類特徵類別中的分佈情況，以查看哪個類別中壞風險客戶的比例較高。"
       ]
     },
     {
@@ -825,7 +825,7 @@
       },
       "outputs": [],
       "source": [
-        "# Plotting Purpose separately.\n",
+        "# 分別繪製目的。\n",
         "plt.figure(figsize=(15, 5))\n",
         "sns.countplot(data=train, x='Purpose', hue='Risk')\n",
         "plt.show()"
@@ -837,13 +837,13 @@
         "id": "tgK8T7C7MMR2"
       },
       "source": [
-        "Insights:\n",
-        "1. The bad risk proportion is higher in female customers. Approximately 36% of the female customers are bad risk while for male customers this proportion falls down to 27%.\n",
-        "2. The bad risk proportion is higher in free and rent housing customers. Approximately 40% of the customers in these housing domains are bad risk while for those who have their own house this proportion falls down to 26%.\n",
-        "3. As expected, customers with little and moderate saving accounts tend to present higher levels of risk. The opposite is true for those with rich and quite rich saving accounts. This makes total sense because clients with high saving account balances can pay their credit services much more easier than those with lower balances. Proportionally speaking, bad risk customers are approximately 3 times more frequent in little and moderate saving accounts when compared to rich and quite rich saving accounts.\n",
-        "4. The same is true for Checking account. Specially, almost 50% of the customers with little checking account are bad risk. The bank must be alert with this!\n",
-        "5. Interestingly, almost 50% of the customers who took out credit with the bank for education purposes are bad risk. This makes sense because those who are investing in education probably are younger and financially unstable. They must be people striving to study and build their lives.\n",
-        "6. Moreover, I focused on bad and good risk proportions in different categorical features domains because naturally the domains with more observations (counts) will have more bad risk customers. This can be observed in all the variables above."
+        "洞察：\n",
+        "1. 女性客戶中的壞風險比例較高。大約36%的女性客戶是壞風險，而男性客戶的比例下降到27%。\n",
+        "2. 自由住房和租賃住房客戶中的壞風險比例較高。大約40%的這些住房領域的客戶是壞風險，而擁有自己房子的客戶比例下降到26%。\n",
+        "3. 如預期，儲蓄賬戶較少和中等的客戶風險較高。相反，富有和相當富有的儲蓄賬戶客戶風險較低。這完全合理，因為高儲蓄賬戶餘額的客戶比餘額較低的客戶更容易支付其信用服務。相對而言，壞風險客戶在少量和中等儲蓄賬戶中的比例比富有和相當富有的儲蓄賬戶高約3倍。\n",
+        "4. 支票賬戶也是如此。特別是，幾乎50%的少量支票賬戶客戶是壞風險。銀行必須警惕這一點！\n",
+        "5. 有趣的是，幾乎50%因教育目的向銀行貸款的客戶是壞風險。這是合理的，因為那些投資教育的人可能年輕且經濟不穩定。他們可能是努力學習和建立生活的人。\n",
+        "6. 此外，我專注於不同分類特徵領域中的壞風險和良好風險比例，因為自然地，觀察（計數）較多的領域將有更多的壞風險客戶。這可以在上面的所有變量中觀察到。"
       ]
     },
     {
@@ -852,8 +852,8 @@
         "id": "e0ttxhoHMMR3"
       },
       "source": [
-        "### Categorical features vs Credit amount\n",
-        "I will examine relationships among some features and Credit amount below in order to see which are the characteristics of customers who take (on average) higher credit amounts and consequently present higher levels of risk."
+        "### 分類特徵與信用金額\n",
+        "我將在下面查看一些特徵與信用金額之間的關係，以了解借用較高信用金額（因此風險較高）的客戶的特徵。"
       ]
     },
     {
@@ -875,7 +875,7 @@
       },
       "outputs": [],
       "source": [
-        "# Plotting Purpose separately.\n",
+        "# 分別繪製目的。\n",
         "plt.figure(figsize=(15, 5))\n",
         "sns.barplot(data=train, x='Purpose', y='Credit amount')\n",
         "plt.show()"
@@ -887,10 +887,10 @@
         "id": "87NzV5pZMMR3"
       },
       "source": [
-        "Insights:\n",
-        "1. On average, customers who hold highly skilled jobs borrow higher credit amounts from the bank.\n",
-        "2. On average, customers within free housing category borrow higher credit amounts from the bank.\n",
-        "3. On average, customers who took out credit with the bank for vacation/others purpose borrow higher credit amounts from the bank."
+        "洞察：\n",
+        "1. 平均而言，擁有高技能工作的客戶從銀行借入較高的信用金額。\n",
+        "2. 平均而言，自由住房類別的客戶從銀行借入較高的信用金額。\n",
+        "3. 平均而言，因度假/其他目的向銀行貸款的客戶從銀行借入較高的信用金額。"
       ]
     },
     {
@@ -899,8 +899,8 @@
         "id": "tzytayVKMMR3"
       },
       "source": [
-        "#### Categorical features vs Duration\n",
-        "I will examine relationships among some features and Duration below in order to see which are the characteristics of customers who take credit services with longer durations and consequently present higher levels of risk."
+        "#### 分類特徵與持續時間\n",
+        "我將在下面查看一些特徵與持續時間之間的關係，以了解使用較長時間信用服務（因此風險較高）的客戶的特徵。"
       ]
     },
     {
@@ -922,7 +922,7 @@
       },
       "outputs": [],
       "source": [
-        "# Plotting Purpose separately.\n",
+        "# 分別繪製目的。\n",
         "plt.figure(figsize=(15, 5))\n",
         "sns.barplot(data=train, x='Purpose', y='Duration', linewidth=0)\n",
         "plt.show()"
@@ -934,9 +934,9 @@
         "id": "Ksgp1-4gMMR4"
       },
       "source": [
-        "Insights:\n",
-        "1. Interestingly, the same patterns found for average credit amount are present here. This was expected, since credit amount and duration are strongly positively correlated.\n",
-        "2. In resume, on average, customers who hold highly skilled jobs, free housing, and took out credit with the bank for vacation/others purpose use longer duration credit services."
+        "洞察：\n",
+        "1. 有趣的是，發現的平均信用金額模式在這裡也存在。這是預期的，因為信用金額和持續時間有強正相關。\n",
+        "2. 總結而言，平均而言，擁有高技能工作的客戶、自由住房客戶和因度假/其他目的向銀行貸款的客戶使用持續時間較長的信用服務。"
       ]
     },
     {
@@ -945,8 +945,8 @@
         "id": "slfWNAXNMMR4"
       },
       "source": [
-        "### Credit amount and Durations vs Risk\n",
-        "I will group the customers by risk in order to see how much credit was given to bad risk customers, what is the proportion of credit amount given for bad and good risk customers and what is the average duration of credit services that were taken by each of these groups."
+        "### 信用金額和持續時間與風險\n",
+        "我將按風險對客戶進行分組，以查看壞風險客戶獲得了多少信用金額，壞風險和良好風險客戶獲得的信用金額比例，以及每組客戶所使用的信用服務的平均持續時間。"
       ]
     },
     {
@@ -968,8 +968,8 @@
         "id": "AJ4eO5SzMMR4"
       },
       "source": [
-        "### Clustering\n",
-        "I will cluster the data in order to assess customers groups regard to some important features like credit amount and duration. By doing this, I will get a good idea of some hidden group tendencies in the data."
+        "### 聚類分析\n",
+        "我將對數據進行聚類分析，以評估一些重要特徵如信用金額和持續時間的客戶群體。通過這樣做，我將對數據中的一些隱藏群體趨勢有一個良好的了解。"
       ]
     },
     {
@@ -979,17 +979,17 @@
       },
       "source": [
         "### K-Means\n",
-        "I will apply clustering with K-Means algorithm. It works with the steps below:\n",
-        "1. Initialize K centroids randomly. We define K before running the algorithm.\n",
-        "2. Label the instances. Each instance will be assigned to the cluster with the closest centroid. It uses the Euclidean Distance for calculating distances.\n",
-        "3. Update the centroids by taking the average of the instances in each cluster.\n",
-        "4. Repeat these steps until the centroids positions don't change anymore.\n",
+        "我將應用K-Means算法進行聚類。其步驟如下：\n",
+        "1. 隨機初始化K個質心。我們在運行算法之前定義K。\n",
+        "2. 標記實例。每個實例將分配到與最近質心的簇。它使用歐幾里得距離來計算距離。\n",
+        "3. 通過取每個簇中實例的平均值來更新質心。\n",
+        "4. 重複這些步驟，直到質心位置不再變化。\n",
         "\n",
-        "To determine the optimal number of clusters/centroids K, there are two methods:\n",
-        "1. Elbow Method: Uses the inertia (within cluster sum of squares). The inflexion point is chosen because the number of clusters before it (less clusters) and after it (more clusters than necessary) are suboptimal.\n",
-        "2. Silhouette Score: The silhouette score for an instance is given by (b-a)/max(a, b) where a is the mean intra-cluster distance and b is the mean nearest-cluster distance. It ranges from -1 to 1. The closer to 1 the better. A silhouette score close to 0 indicates that the instance is next to a cluster boundary. A silhouette score close to -1 indicates that the instance is in the wrong cluster.\n",
+        "確定最佳簇數/K值有兩種方法：\n",
+        "1. 肘部法：使用慣性（簇內平方和）。選擇拐點，因為其前後的簇數（較少的簇和過多的簇）是次優的。\n",
+        "2. 輪廓分數：實例的輪廓分數由（b-a）/max（a，b）給出，其中a是平均簇內距離，b是最近簇的平均距離。範圍從-1到1。越接近1越好。輪廓分數接近0表示實例位於簇邊界旁邊。輪廓分數接近-1表示實例在錯誤的簇中。\n",
         "\n",
-        "I will choose K using the elbow method because I am clustering the data just for visualization and insight purposes."
+        "我將使用肘部法選擇K，因為我進行聚類僅是為了可視化和洞察目的。"
       ]
     },
     {
@@ -998,7 +998,7 @@
         "id": "M1vqA-fYMMR4"
       },
       "source": [
-        "### Age vs Duration clustering"
+        "### 年齡與持續時間的聚類"
       ]
     },
     {
@@ -1009,7 +1009,7 @@
       },
       "outputs": [],
       "source": [
-        "# Getting inertias of different number of clusters K K-Means models.\n",
+        "# 獲取不同數量簇K的K-Means模型的慣性。\n",
         "\n",
         "clustering_df = train[['Age', 'Duration']]\n",
         "\n",
@@ -1025,14 +1025,14 @@
       },
       "outputs": [],
       "source": [
-        "# Plotting curve for elbow method.\n",
+        "# 繪製肘部法的曲線。\n",
         "\n",
         "plt.figure(figsize=(5, 3))\n",
-        "plt.title('Elbow Method')\n",
+        "plt.title('肘部法')\n",
         "plt.plot(range(1, 6), inertias, 'bo-')\n",
         "plt.xlabel('k', fontsize=14)\n",
         "plt.xticks(range(1, 6))\n",
-        "plt.ylabel('Inertia', fontsize=14)\n",
+        "plt.ylabel('慣性', fontsize=14)\n",
         "plt.show()"
       ]
     },
@@ -1042,7 +1042,7 @@
         "id": "18SZzV2GMMR5"
       },
       "source": [
-        "Clearly, 3 is the optimal number of clusters by the elbow method."
+        "顯然，根據肘部法，3是最佳簇數。"
       ]
     },
     {
@@ -1053,7 +1053,7 @@
       },
       "outputs": [],
       "source": [
-        "# Applying K-Means clustering with the optimal number of clusters.\n",
+        "# 使用最佳簇數進行K-Means聚類。\n",
         "\n",
         "k_means = KMeans(n_clusters=3)\n",
         "k_means.fit(clustering_df)"
@@ -1067,7 +1067,7 @@
       },
       "outputs": [],
       "source": [
-        "# Plotting the clustering result.\n",
+        "# 繪製聚類結果。\n",
         "\n",
         "clustering_df['Clusters'] = k_means.labels_\n",
         "\n",
@@ -1082,10 +1082,10 @@
         "id": "NsQHpsIRMMR5"
       },
       "source": [
-        "Insights about the groups formed:\n",
-        "1. Group 0: Older customers (from 40 to 70 years old) that take credit services with short durations (from 10 to 30 months).\n",
-        "2. Group 1: Young customers (from 20 to 40 years old) that take credit services with short durations (from 10 to 30 months). These customers might be people who don't have financial stability and take low loan values for purposes like education and so on.\n",
-        "3. Group 2: Customers who take credit services with longer durations. These customers might be people that represent a high level of risk and take credit for purposes like vacation/others."
+        "關於形成的群體的洞察：\n",
+        "1. 群體0：年齡在40到70歲之間的客戶，使用短期信用服務（10到30個月）。\n",
+        "2. 群體1：年齡在20到40歲之間的年輕客戶，使用短期信用服務（10到30個月）。這些客戶可能是沒有經濟穩定的人，借款金額較低，目的是教育等。\n",
+        "3. 群體2：使用較長時間信用服務的客戶。這些客戶可能是風險較高的人，借款目的是度假/其他。"
       ]
     },
     {
@@ -1094,7 +1094,7 @@
         "id": "Ax3rs1bpMMR5"
       },
       "source": [
-        "### Credit amount vs Duration clustering"
+        "### 信用金額與持續時間的聚類"
       ]
     },
     {
@@ -1105,7 +1105,7 @@
       },
       "outputs": [],
       "source": [
-        "# Getting inertias of different number of clusters K K-Means models.\n",
+        "# 獲取不同數量簇K的K-Means模型的慣性。\n",
         "\n",
         "clustering_df = train[['Credit amount', 'Duration']]\n",
         "\n",
@@ -1121,14 +1121,14 @@
       },
       "outputs": [],
       "source": [
-        "# Plotting curve for elbow method.\n",
+        "# 繪製肘部法的曲線。\n",
         "\n",
         "plt.figure(figsize=(5, 3))\n",
-        "plt.title('Elbow Method')\n",
+        "plt.title('肘部法')\n",
         "plt.plot(range(1, 6), inertias, 'bo-')\n",
         "plt.xlabel('k', fontsize=14)\n",
         "plt.xticks(range(1, 6))\n",
-        "plt.ylabel('Inertia', fontsize=14)\n",
+        "plt.ylabel('慣性', fontsize=14)\n",
         "plt.show()"
       ]
     },
@@ -1138,7 +1138,7 @@
         "id": "iNd1rPILMMR5"
       },
       "source": [
-        "Clearly, 2 is the optimal number of clusters by the elbow method."
+        "顯然，根據肘部法，2是最佳簇數。"
       ]
     },
     {
@@ -1149,7 +1149,7 @@
       },
       "outputs": [],
       "source": [
-        "# Applying K-Means clustering with the optimal number of clusters.\n",
+        "# 使用最佳簇數進行K-Means聚類。\n",
         "\n",
         "k_means = KMeans(n_clusters=2)\n",
         "k_means.fit(clustering_df)"
@@ -1163,7 +1163,7 @@
       },
       "outputs": [],
       "source": [
-        "# Plotting the clustering result.\n",
+        "# 繪製聚類結果。\n",
         "\n",
         "clustering_df['Clusters'] = k_means.labels_\n",
         "\n",
@@ -1178,9 +1178,9 @@
         "id": "ryP43iVNMMR6"
       },
       "source": [
-        "Insights about the groups formed:\n",
-        "1. Group 0: Customers who take lower credit amounts from the bank (from 0 to 5000) with various durations (from 0 to 50 months).\n",
-        "2. Group 1: Customers who take higher credit amounts from the bank (from 5000 to 16000) with various durations (from 0 to 60 months). The credit services with longer durations were taken by this group."
+        "關於形成的群體的洞察：\n",
+        "1. 群體0：從銀行借入較低信用金額（0到5000），持續時間不同（0到50個月）。\n",
+        "2. 群體1：從銀行借入較高信用金額（5000到16000），持續時間不同（0到60個月）。較長持續時間的信用服務是由這組人群使用的。"
       ]
     },
     {
@@ -1189,23 +1189,23 @@
         "id": "xN3oPB3FMMR6"
       },
       "source": [
-        "### EDA conclusions\n",
-        "<b>Main insights:</b><br>\n",
-        "<b>1.</b> Young customers tend to present higher credit risk. This makes sense since younger people usually don't have financial stability.<br>\n",
-        "<b>2.</b> Customers who take higher credit amounts from the bank tend to present higher risk. This makes total sense. The higher the credit amount taken, the harder it is to pay it.<br>\n",
-        "<b>3.</b> Customers whose credit services have a long duration present higher risk. The more time a customer spends using a credit service without paying it, the higher the risk of default.<br>\n",
-        "<b>4.</b> Credit amount and Duration are strongly positively correlated. Credit services with longer durations generally are associated with higher credit amounts and vice-versa. Furthermore, a weak positive correlation exists between these two features and risk. This makes sense because a customer holding a credit service for a longer duration with a high credit amount taken presents higher risk.<br>\n",
-        "<b>5.</b> Customers with little saving and checking accounts tend to present higher credit risk. Particularly, almost 50% of the customers who have little checking accounts are bad risk ones.<br>\n",
-        "<b>6.</b> When a customer takes credit from the bank for vacation/others and education purposes, the bank must be alert. Almost 50% of the customers who take credit for education are bad risk. Moreover, vacation/others purpose presents the higher average credit amount and duration compared to all of the other purposes. Thus, these categories represent higher risk levels.<br>\n",
-        "<b>7.</b> In terms of profile, most of the customers are:<br>\n",
-        "    - Male.<br>\n",
-        "    - Around 36 years old.<br>\n",
-        "    - Hold a skilled job.<br>\n",
-        "    - Have their own house.<br>\n",
-        "    - Take low credit amounts.<br>\n",
-        "    - Utilize the bank's credit service for 12 or 24 months.<br>\n",
-        "    - Have little and little/moderate saving and checking accounts.<br>\n",
-        "    - Take credit for car, radio/TV and furniture/equipment purposes.<br>"
+        "### EDA結論\n",
+        "<b>主要洞察：</b><br>\n",
+        "<b>1.</b> 年輕客戶的信用風險較高。這是合理的，因為年輕人通常沒有經濟穩定。<br>\n",
+        "<b>2.</b> 從銀行借入較高信用金額的客戶風險較高。這是合理的，因為借款金額越高，償還難度越大，風險越高。<br>\n",
+        "<b>3.</b> 使用信用服務持續時間較長的客戶風險較高。使用信用服務時間越長，未償還風險越高。<br>\n",
+        "<b>4.</b> 信用金額和持續時間有強正相關。持續時間較長的信用服務通常與較高的信用金額相關，反之亦然。此外，這兩個特徵與風險之間存在弱正相關。這是合理的，因為持有較長持續時間且信用金額較高的信用服務的客戶風險較高。<br>\n",
+        "<b>5.</b> 儲蓄賬戶和支票賬戶較少的客戶風險較高。特別是，幾乎50%的少量支票賬戶客戶是壞風險。<br>\n",
+        "<b>6.</b> 當客戶為度假/其他和教育目的向銀行貸款時，銀行必須警惕。幾乎50%的教育目的貸款客戶是壞風險。此外，度假/其他目的的貸款在所有目的中具有最高的平均信用金額和持續時間。因此，這些類別代表更高的風險水平。<br>\n",
+        "<b>7.</b> 就客戶特徵而言，大多數客戶是：<br>\n",
+        "    - 男性。<br>\n",
+        "    - 年齡約36歲。<br>\n",
+        "    - 擁有技能工作。<br>\n",
+        "    - 擁有自己的房子。<br>\n",
+        "    - 借款金額較低。<br>\n",
+        "    - 使用銀行信用服務的時間為12或24個月。<br>\n",
+        "    - 擁有少量或中等的儲蓄和支票賬戶。<br>\n",
+        "    - 貸款目的是購車、收音機/電視和家具/設備。<br>"
       ]
     }
   ],
