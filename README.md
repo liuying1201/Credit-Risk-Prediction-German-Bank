@@ -7,12 +7,8 @@
 
 ## 2. 使用的技術和工具
 專案使用了以下技術和工具：
-- Python（包括 Pandas、Numpy、Matplotlib、Seaborn、Scikit-Learn、Category-Encoders、Scikit-Optimize、Xgboost 和 Flask）
-- Jupyter Notebook
-- Git 和 GitHub（版本控制）
+- Ｒ studio
 - 機器學習分類算法和統計學
-- Anaconda（終端）
-- Visual Studio Code（開發環境）
 
 ## 3. 商業問題和項目目標
 德國銀行希望通過預測其客戶的信用風險實現以下目標：
