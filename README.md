@@ -9,6 +9,7 @@
 專案使用了以下技術和工具：
 - Ｒ studio
 - 機器學習分類算法和統計學
+- Visual Studio
 
 ## 3. 商業問題和項目目標
 德國銀行希望通過預測其客戶的信用風險實現以下目標：
@@ -55,10 +56,11 @@
 回歸係數為負值（-0.29），顯示女性客戶的信用風險較低，但置信區間包含零，表明該結果在統計學上不顯著。雖然女性客戶的信用風險略低，但此關係在統計學上未達顯著，可能需要更多數據來進一步分析。
 
 ![分類特徵和目標變量](images/categoricalvstarget.png)
-![多元回歸分析](images/Regression Coefficients.png)
+![多元回歸分析](images/Regression%20Coefficients.png)
 
 7. **度假或其他非必要用途借款的客戶風險更高**：度假或其他非必要用途借款的客戶，通常風險更高，因為這些借款往往涉及較大的金額和較長的償還期。
-![借款用途和目標變量](images/purposevstarget.png)
+![借款用途和風險描述性統計](images/Distribution%20of%20Risk%20by%20Purpose.png)
+![借款用途和風險關係](images/Purpose%20and%20Credit%20Risk%20Mosaic%20Plot.png)
 
 ## 6. 模型訓練
 1. 對分類特徵進行編碼（OrdinalEncoder 和 TargetEncoder），對數值和分類特徵進行標準化（StandardScaler）。
