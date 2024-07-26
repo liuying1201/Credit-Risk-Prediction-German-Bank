@@ -55,7 +55,7 @@
 回歸係數為負值（-0.29），顯示女性客戶的信用風險較低，但置信區間包含零，表明該結果在統計學上不顯著。雖然女性客戶的信用風險略低，但此關係在統計學上未達顯著，可能需要更多數據來進一步分析。
 
 ![分類特徵和目標變量](images/categoricalvstarget.png)
-![多元回歸分析](images/Regression Coefficients.png)
+![多元回歸分析](images/Regression%20Coefficients.png)
 
 7. **度假或其他非必要用途借款的客戶風險更高**：度假或其他非必要用途借款的客戶，通常風險更高，因為這些借款往往涉及較大的金額和較長的償還期。
 ![借款用途和目標變量](images/purposevstarget.png)
