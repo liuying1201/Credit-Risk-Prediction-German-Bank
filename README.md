@@ -93,7 +93,9 @@
    - **Checking account (支票存款):** 0.0556
    - **Housing (住房):** 0.0537
    - **Saving accounts (儲蓄存款):** 0.0455
+
    這表示借款金額 (Credit amount) 和年齡 (Age) 是對模型預測最有影響的特徵，而儲蓄存款 (Saving accounts) 和住房 (Housing) 的影響相對較小。
+   
 2. **模型性能比較**  
    我們比較了多個模型的性能，並分析了其 ROC-AUC 分數。
 3. **模型選擇與調優**  
